@@ -7,6 +7,8 @@ function App() {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [bannerUrl, setBannerUrl] = useState('');
+  const [tickets, setTickets] = useState(1);
+  const [seatNumber, setSeatNumber] = useState('');
 
   const fetchMovies = async () => {
     try {
@@ -38,25 +40,18 @@ function App() {
     }
   };
 
-  const handleBooking = () => {
-    alert('🎉 Successfully Booked!');
-  };
-
-  const handleDeleteAll = async () => {
-    if (window.confirm('Are you sure you want to delete all movies?')) {
-      try {
-        await axios.delete('http://localhost:5000/api/movies');
-        alert('All movies deleted ✅');
-        fetchMovies();
-      } catch (error) {
-        console.error('Error deleting movies:', error);
-        alert('Failed to delete movies ❌');
-      }
-    }
+  const handleBooking = (movieId) => {
+    alert(`🎉 Successfully booked ${tickets} ticket(s) for seat(s): ${seatNumber} 🎬`);
   };
 
   return (
     <div className="app dark">
+      <header className="app-header-box">
+        <div className="logo-box">
+          <img src="/images/movielogo.png" alt="Movie Logo" className="logo" />
+        </div>
+      </header>
+
       <div className="landing">
         <div className="overlay">
           <h1 className="brand">MyMovieSlot</h1>
@@ -81,38 +76,47 @@ function App() {
         />
         <input
           type="text"
-          placeholder="Banner Image URL"
+          placeholder="Banner Image URL (optional)"
           value={bannerUrl}
           onChange={e => setBannerUrl(e.target.value)}
-          required
         />
         <button type="submit">Add Movie</button>
       </form>
 
-      <button
-        style={{
-          backgroundColor: '#ff1744',
-          border: 'none',
-          color: 'white',
-          padding: '10px 20px',
-          borderRadius: '6px',
-          fontWeight: 'bold',
-          cursor: 'pointer',
-          margin: '20px auto',
-          display: 'block'
-        }}
-        onClick={handleDeleteAll}
-      >
-        🗑️ Delete All Movies
-      </button>
-
       <div className="movies-list">
-        {movies.map(movie => (
+        {movies.map((movie, index) => (
           <div key={movie._id} className="movie-card">
-            <img src={movie.bannerUrl} alt={movie.title} className="movie-banner" />
+            <img
+              src={
+                movie.bannerUrl ||
+                (index === 0 ? '/images/movie1.jpg' :
+                 index === 1 ? '/images/movie2.jpg' : '/images/default.jpg')
+              }
+              alt={movie.title}
+              className="movie-banner"
+            />
             <h3>{movie.title}</h3>
             <p>{movie.description}</p>
-            <button onClick={handleBooking}>Book</button>
+
+            <div className="booking-section">
+              <input
+                type="number"
+                min="1"
+                max="10"
+                value={tickets}
+                onChange={e => setTickets(e.target.value)}
+                placeholder="Tickets"
+                className="booking-input"
+              />
+              <input
+                type="text"
+                value={seatNumber}
+                onChange={e => setSeatNumber(e.target.value)}
+                placeholder="Seat Number(s)"
+                className="booking-input"
+              />
+              <button onClick={() => handleBooking(movie._id)}>Book</button>
+            </div>
           </div>
         ))}
       </div>
