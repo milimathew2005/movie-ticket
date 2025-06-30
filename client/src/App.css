@@ -1,0 +1,204 @@
+/* Reset and base */
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #121212;
+  color: #fff;
+}
+
+.app {
+  padding: 0;
+  margin: 0;
+}
+
+/* Landing Section */
+.landing {
+  position: relative;
+  height: 100vh;
+  background-image: url('/public/images/bg.jpg'); /* Make sure image is in public/images */
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.overlay {
+  background: rgba(0, 0, 0, 0.6);
+  padding: 60px 30px;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 0 15px rgba(255, 56, 92, 0.7);
+}
+
+.brand {
+  font-size: 4rem;
+  font-weight: 900;
+  letter-spacing: 4px;
+  margin-bottom: 15px;
+  color: #ff385c;
+  text-shadow: 0 0 10px #161313, 0 0 20px #ff385c;
+}
+
+.tagline {
+  font-size: 1.8rem;
+  color: #ddd;
+  font-weight: 600;
+  text-shadow: 0 0 6px #fff;
+}
+
+/* Movie Form */
+.movie-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 500px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #1f1f1f;
+  border-radius: 12px;
+  box-shadow: 0 0 12px rgba(255, 56, 92, 0.6);
+}
+
+.movie-form input {
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  background-color: #2a2a2a;
+  color: #fff;
+  transition: background-color 0.3s ease;
+}
+
+.movie-form input:focus {
+  background-color: #3b3b3b;
+  outline: none;
+}
+
+.movie-form button {
+  padding: 12px;
+  background-color: #ff385c;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  font-weight: 700;
+  transition: background-color 0.3s ease;
+}
+
+.movie-form button:hover {
+  background-color: #e52e4d;
+}
+
+/* Movie List */
+.movies-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 24px;
+  padding: 40px;
+}
+
+/* Movie Card */
+.movie-card {
+  background-color: #1f1f1f;
+  padding: 16px;
+  border-radius: 12px;
+  box-shadow: 0 0 12px rgba(255, 56, 92, 0.5);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.movie-banner {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  box-shadow: 0 0 10px #ff385c;
+}
+
+.movie-card h3 {
+  margin: 10px 0 5px;
+  color: #ffcccb;
+  font-weight: 700;
+  text-shadow: 0 0 6px #181515;
+}
+
+.movie-card p {
+  color: #bbb;
+  font-size: 0.9rem;
+  min-height: 50px;
+  font-weight: 500;
+}
+
+/* Booking Section inside movie card */
+.booking-section {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+}
+
+.booking-section label {
+  color: #ddd;
+  font-weight: 600;
+  font-size: 0.9rem;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.booking-section select,
+.booking-section input[type="text"] {
+  flex: 1;
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: none;
+  font-size: 1rem;
+  background-color: #2a2a2a;
+  color: #fff;
+  transition: background-color 0.3s ease;
+}
+
+.booking-section select:focus,
+.booking-section input[type="text"]:focus {
+  background-color: #3b3b3b;
+  outline: none;
+}
+
+.booking-section button {
+  padding: 10px 20px;
+  background-color: #03dac6;
+  border: none;
+  border-radius: 6px;
+  color: #000;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 100%;
+  max-width: 200px;
+  align-self: center;
+}
+
+.booking-section button:hover {
+  background-color: #00bfa5;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .movies-list {
+    grid-template-columns: 1fr;
+    padding: 20px;
+  }
+  
+  .movie-form {
+    margin: 20px 10px;
+  }
+}
