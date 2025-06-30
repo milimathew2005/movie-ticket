@@ -1,8 +1,7 @@
-/* Reset and base */
 body, html {
   margin: 0;
   padding: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Poppins-bold', Tahoma, Geneva, Verdana, sans-serif;
   background-color: #121212;
   color: #fff;
 }
@@ -10,18 +9,44 @@ body, html {
 .app {
   padding: 0;
   margin: 0;
+  position: relative;
 }
 
-/* Landing Section */
+/* 🎬 Full-width Logo Bar */
+.app-header-box {
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.85);
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.logo-box {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  height: 50px;
+  width: auto;
+}
+
+/* 🎥 Landing Section */
 .landing {
   position: relative;
   height: 100vh;
-  background-image: url('/public/images/bg.jpg'); /* Make sure image is in public/images */
+  background-image: url('/public/images/bg.jpg');
   background-size: cover;
   background-position: center;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding-top: 80px; /* Space for fixed logo bar */
 }
 
 .overlay {
@@ -29,26 +54,24 @@ body, html {
   padding: 60px 30px;
   border-radius: 16px;
   text-align: center;
-  box-shadow: 0 0 15px rgba(255, 56, 92, 0.7);
 }
 
 .brand {
   font-size: 4rem;
-  font-weight: 900;
-  letter-spacing: 4px;
+  font-weight: bold;
+  letter-spacing: 2px;
   margin-bottom: 15px;
   color: #ff385c;
-  text-shadow: 0 0 10px #161313, 0 0 20px #ff385c;
+  text-shadow: 2px 2px 8px #000;
 }
 
 .tagline {
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   color: #ddd;
-  font-weight: 600;
-  text-shadow: 0 0 6px #fff;
+  text-shadow: 1px 1px 4px #000;
 }
 
-/* Movie Form */
+/* 🎬 Movie Form */
 .movie-form {
   display: flex;
   flex-direction: column;
@@ -58,7 +81,6 @@ body, html {
   padding: 20px;
   background-color: #1f1f1f;
   border-radius: 12px;
-  box-shadow: 0 0 12px rgba(255, 56, 92, 0.6);
 }
 
 .movie-form input {
@@ -66,14 +88,6 @@ body, html {
   border: none;
   border-radius: 6px;
   font-size: 1rem;
-  background-color: #2a2a2a;
-  color: #fff;
-  transition: background-color 0.3s ease;
-}
-
-.movie-form input:focus {
-  background-color: #3b3b3b;
-  outline: none;
 }
 
 .movie-form button {
@@ -84,15 +98,13 @@ body, html {
   border-radius: 6px;
   font-size: 1rem;
   cursor: pointer;
-  font-weight: 700;
-  transition: background-color 0.3s ease;
 }
 
 .movie-form button:hover {
   background-color: #e52e4d;
 }
 
-/* Movie List */
+/* 🎟️ Movie Cards */
 .movies-list {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -100,16 +112,12 @@ body, html {
   padding: 40px;
 }
 
-/* Movie Card */
 .movie-card {
   background-color: #1f1f1f;
   padding: 16px;
   border-radius: 12px;
-  box-shadow: 0 0 12px rgba(255, 56, 92, 0.5);
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.05);
   text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
 }
 
 .movie-banner {
@@ -118,87 +126,44 @@ body, html {
   object-fit: cover;
   border-radius: 6px;
   margin-bottom: 10px;
-  box-shadow: 0 0 10px #ff385c;
 }
 
 .movie-card h3 {
   margin: 10px 0 5px;
   color: #ffcccb;
-  font-weight: 700;
-  text-shadow: 0 0 6px #181515;
 }
 
 .movie-card p {
   color: #bbb;
   font-size: 0.9rem;
   min-height: 50px;
-  font-weight: 500;
 }
 
-/* Booking Section inside movie card */
+/* 🪑 Booking Inputs */
 .booking-section {
-  margin-top: 15px;
+  margin-top: 10px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  align-items: center;
-}
-
-.booking-section label {
-  color: #ddd;
-  font-weight: 600;
-  font-size: 0.9rem;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   gap: 10px;
 }
 
-.booking-section select,
-.booking-section input[type="text"] {
-  flex: 1;
-  padding: 8px 12px;
+.booking-input {
+  padding: 8px;
   border-radius: 6px;
   border: none;
-  font-size: 1rem;
-  background-color: #2a2a2a;
-  color: #fff;
-  transition: background-color 0.3s ease;
+  font-size: 0.95rem;
 }
 
-.booking-section select:focus,
-.booking-section input[type="text"]:focus {
-  background-color: #3b3b3b;
-  outline: none;
-}
-
-.booking-section button {
+.movie-card button {
   padding: 10px 20px;
   background-color: #03dac6;
   border: none;
   border-radius: 6px;
   color: #000;
-  font-weight: 700;
+  font-weight: bold;
   cursor: pointer;
-  transition: background-color 0.3s ease;
-  width: 100%;
-  max-width: 200px;
-  align-self: center;
 }
 
-.booking-section button:hover {
+.movie-card button:hover {
   background-color: #00bfa5;
-}
-
-/* Responsive */
-@media (max-width: 600px) {
-  .movies-list {
-    grid-template-columns: 1fr;
-    padding: 20px;
-  }
-  
-  .movie-form {
-    margin: 20px 10px;
-  }
 }
